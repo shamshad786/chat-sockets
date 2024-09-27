@@ -34,12 +34,10 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET_KEY,
 });
 
-app.use(
-  cors(corsOptions)
-);
+app.use(helmet());
+app.use(cors(corsOptions));
 app.options("*", cors());
 
-app.use(helmet());
 //hanling json data
 app.use(express.json());
 ///handling form data (agar multer use karenge image handling ke liye 'express.urlencoded()' to iski jarurat nahi hai)

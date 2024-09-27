@@ -10,9 +10,10 @@ const sendJwtToken = (userId) =>{
 }
 
 const cookieOptions = {
-  maxAge: 15 * 24 * 60 * 60 * 1000,
+  maxAge: 15 * 24 * 60 * 60 * 1000,  // 15 days
   httpOnly: true,
-  secure: true,
+  secure: process.env.NODE_ENV === "production",  // Only secure in production
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",  // Required for cross-site cookies
 };
 // const cookieOptions = {
 //   //15 days (15 * 24 * 60 * 60 * 1000 => day,hour,minute,second,millisecond)
