@@ -10,12 +10,17 @@ const sendJwtToken = (userId) =>{
 }
 
 const cookieOptions = {
-  //15 days (15 * 24 * 60 * 60 * 1000 => day,hour,minute,second,millisecond)
   maxAge: 15 * 24 * 60 * 60 * 1000,
-  sameSite: "none",
   httpOnly: true,
   secure: true,
 };
+// const cookieOptions = {
+//   //15 days (15 * 24 * 60 * 60 * 1000 => day,hour,minute,second,millisecond)
+//   maxAge: 15 * 24 * 60 * 60 * 1000,
+//   sameSite: "none",
+//   httpOnly: true,
+//   secure: true,
+// };
 
 const emitEvent = (req,event,users,data) =>{
 
