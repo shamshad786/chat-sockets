@@ -50,10 +50,10 @@ const io = new Server(server, {
   // pingInterval: 25000,
   cors: corsOptions
 });
+app.use(cookieParser());
+
 //! yaha hum io ke instance ko set kar rahe hai usko baar hum io ko kahi bhi use kar sakte hai get kar ke eg: req.app.get("io")
 app.set("io", io)
-
-app.use(cookieParser());
 
 //development log
 console.log(`This Project Runs in____${process.env.NODE_ENV}____mode`);
