@@ -9,19 +9,21 @@ const sendJwtToken = (userId) =>{
       });
 }
 
-// const cookieOptions = {
-//   maxAge: 15 * 24 * 60 * 60 * 1000,  // 15 days
-//   httpOnly: true,
-//   secure: process.env.NODE_ENV === "production",  // Only secure in production
-//   sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",  // Required for cross-site cookies
-// };
 const cookieOptions = {
-  //15 days (15 * 24 * 60 * 60 * 1000 => day,hour,minute,second,millisecond)
-  maxAge: 15 * 24 * 60 * 60 * 1000,
-  sameSite: "none",
+  maxAge: 15 * 24 * 60 * 60 * 1000,  // 15 days
   httpOnly: true,
-  secure: true,
+  secure: process.env.NODE_ENV === "production",  // Only secure in production (HTTPS)
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+  domain: process.env.NODE_ENV === "production" ? "https://infotechsol.vercel.app" : "localhost",  // Domain for cross-site cookies
+  path: "/",  // Root path
 };
+// const cookieOptions = {
+//   //15 days (15 * 24 * 60 * 60 * 1000 => day,hour,minute,second,millisecond)
+//   maxAge: 15 * 24 * 60 * 60 * 1000,
+//   sameSite: "none",
+//   httpOnly: true,
+//   secure: true,
+// };
 
 const emitEvent = (req,event,users,data) =>{
 
